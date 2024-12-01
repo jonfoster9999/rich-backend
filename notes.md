@@ -1,0 +1,1 @@
+nohup RAILS_ENV=production puma -b tcp://0.0.0.0:3000 > puma.log 2>&1 &
