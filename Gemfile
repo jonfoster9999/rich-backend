@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.4"
 gem 'ruby-vips'
+
+gem 'rack-cors', require: 'rack/cors'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
 gem "image_processing", ">= 1.2"
