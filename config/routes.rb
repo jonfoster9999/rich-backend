@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       get :home
     end
   end
+
+  resources :galleries
 end

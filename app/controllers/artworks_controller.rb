@@ -14,14 +14,9 @@ class ArtworksController < ApplicationController
     render json: @artworks
   end
 
-  def home
-    render json: Artwork.where(home: true)&.first || Artwork.first
-  end
-
-
   private
 
   def artwork_params
-    params.permit(:caption, :artwork_file, :home)
+    params.permit(:caption, :artwork_file)
   end
 end
