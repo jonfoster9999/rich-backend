@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_05_164015) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_201628) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_164015) do
     t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gallery_id"
   end
 
   create_table "galleries", force: :cascade do |t|
@@ -50,16 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_164015) do
     t.integer "sort_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "gallery_artworks", force: :cascade do |t|
-    t.integer "artwork_id"
-    t.integer "gallery_id"
-    t.integer "sort_order", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artwork_id"], name: "index_gallery_artworks_on_artwork_id"
-    t.index ["gallery_id"], name: "index_gallery_artworks_on_gallery_id"
   end
 
   create_table "test_records", force: :cascade do |t|
