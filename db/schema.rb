@@ -54,12 +54,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_164015) do
 
   create_table "gallery_artworks", force: :cascade do |t|
     t.integer "artwork_id"
-    t.integer "galleries_id"
+    t.integer "gallery_id"
     t.integer "sort_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artwork_id"], name: "index_gallery_artworks_on_artwork_id"
-    t.index ["galleries_id"], name: "index_gallery_artworks_on_galleries_id"
+    t.index ["gallery_id"], name: "index_gallery_artworks_on_gallery_id"
   end
 
   create_table "test_records", force: :cascade do |t|
