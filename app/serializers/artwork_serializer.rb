@@ -1,5 +1,5 @@
 class ArtworkSerializer < ActiveModel::Serializer
-  attributes :id, :artwork_url, :thumbnail_url, :home
+  attributes :id, :artwork_url, :thumbnail_url
 
   def artwork_url
     object.artwork_file&.url

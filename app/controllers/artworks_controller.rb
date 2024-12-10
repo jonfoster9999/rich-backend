@@ -17,6 +17,6 @@ class ArtworksController < ApplicationController
   private
 
   def artwork_params
-    params.permit(:caption, :artwork_file)
+    params.permit(:caption, :artwork_file, gallery_ids: [])
   end
 end
