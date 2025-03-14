@@ -1,12 +1,12 @@
 class GalleriesController < ApplicationController
   def create
-    # @artwork = Artwork.new(artwork_params)
-    #
-    # if @artwork.save
-    #   render json: @artwork
-    # else
-    #   render json: { error: @artwork.errors.full_messages.join(', ') }
-    # end
+    @gallery = Gallery.new(gallery_params)
+
+    if @gallery.save
+      render json: @gallery
+    else
+      render json: { error: @gallery.errors.full_messages.join(', ') }, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -16,13 +16,41 @@ class GalleriesController < ApplicationController
 
   def show
     @gallery = Gallery.find_by(id: params[:id])
-    render json: @gallery
+
+    if @gallery
+      render json: @gallery
+    else
+      render json: { error: "Gallery not found" }, status: :not_found
+    end
   end
 
-  def home
+  def update
+    @gallery = Gallery.find_by(id: params[:id])
 
+    if @gallery
+      if @gallery.update(gallery_params)
+        render json: @gallery
+      else
+        render json: { error: @gallery.errors.full_messages.join(', ') }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "Gallery not found" }, status: :not_found
+    end
   end
 
+  def destroy
+    @gallery = Gallery.find_by(id: params[:id])
+
+    if @gallery
+      if @gallery.destroy
+        render json: { message: "Gallery successfully deleted" }
+      else
+        render json: { error: "Failed to delete gallery" }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "Gallery not found" }, status: :not_found
+    end
+  end
 
   private
 
