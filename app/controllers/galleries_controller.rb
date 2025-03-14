@@ -15,7 +15,14 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @gallery = Gallery.find_by(id: params[:id])
+    @gallery = if params[:id].to_i == Gallery::HOME_GALLERY_ID
+                 # Find or create the home gallery
+                 Gallery.find_or_create_by(id: Gallery::HOME_GALLERY_ID) do |gallery|
+                   gallery.name = "Home Gallery"
+                 end
+               else
+                 Gallery.find_by(id: params[:id])
+               end
 
     if @gallery
       render json: @gallery
